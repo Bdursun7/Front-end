@@ -22,8 +22,7 @@ function deleted(id){
 	// deleting the entry with index
 	array.splice(index,1)
 
-	// We need to re-render the page for getting
-	// the results so redirect to same page.
+	// re-rendering the page to ShowTasks
 	history('/ShowTasks')
 }
 
@@ -48,9 +47,11 @@ return(
                             <td>{item.ProjectName}</td>
                             <td>{item.TaskName}</td>
                             <td>{item.Status}</td>
+
                             <td><Link to={`/Update`}><Button onClick={(e) =>
                                 setID(item.Taskid,item.ProjectName,item.TaskName,item.Status)} variant="outline-dark">
                                 Update</Button></Link></td>
+                                
                             <td><Button onClick={e => deleted(item.id)}
                             variant="danger">Delete</Button></td>   
                         </tr>

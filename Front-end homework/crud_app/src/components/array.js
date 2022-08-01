@@ -1,4 +1,4 @@
-// Javascript object named array with 3 key-values
+// Random dataset
 const array = [
 	{
 		id:'1',

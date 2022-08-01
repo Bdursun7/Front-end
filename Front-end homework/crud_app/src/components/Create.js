@@ -2,13 +2,11 @@ import React, { useState } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import array from './array';
-import { v4 as uuid } from 'uuid';
 import { Link, useNavigate } from 'react-router-dom';
 
 function Create() {
 
-	// Making usestate for setting and
-	// fetching a value in jsx
+	// settings for dataset's parameters
 	const [Taskid, settaskid] = useState('');
 	const [ProjectName, setprojectname] = useState('');
 	const [TaskName, settaskname] = useState('');
@@ -17,17 +15,16 @@ function Create() {
 	// Using useNavigation for redirecting to pages
 	let history = useNavigate();
 
-	// Function for creating a post/entry
+	// Function for creating a post
 	const handelSubmit = (e) =>{
 		e.preventDefault(); // Prevent reload
 
-		// Fetching a value from usestate and
-		// pushing to javascript object
+		// Pushing the new object to array
 		let a = Taskid, b=ProjectName, c=TaskName, d=Status
  		array.push({Taskid:a, ProjectName:b, TaskName:c, Status: d})
 
 
-	// Redirecting to home page after creation done
+	// Redirecting to Showtasks page after creation done
 	history('/ShowTasks')
 		
 	}
@@ -36,8 +33,8 @@ return (
 	<div >
 		<Form className="d-grid gap-2" style={{margin:'15rem'}}>
 
-{/* Fetching a value from input textfirld
-in a setname using usestate*/}
+		{/*Taking parameter's new values from the input and fetching*/}
+
 <Form.Group className="mb-3" controlId="formBasicName">
 	<Form.Control onChange={e => settaskid(e.target.value)}
 				type="number"
@@ -50,8 +47,7 @@ in a setname using usestate*/}
 				placeholder="Enter Project Name" required/>
 </Form.Group>
 
-	{/* Fetching a value from input textfirld in
-	a setage using usestate*/}
+	
 <Form.Group className="mb-3" controlId="formBasicAge">
 	<Form.Control onChange={e => settaskname(e.target.value)}
 				type="text"
@@ -64,15 +60,14 @@ in a setname using usestate*/}
 				placeholder="Enter Status" required/>
 </Form.Group>
 
-	{/* handing a onclick event in button for
-	firing a function */}
+
 <Button
 onClick={e => handelSubmit(e)}
 	variant="outline-success" type="submit">
 	Submit
 </Button>
 
-{/* Redirecting back to home page */}
+
 <Link className="d-grid gap-2" to='/'>
 	<Button variant="secondary" size="lg">
 	Home
